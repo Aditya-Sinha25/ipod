@@ -1,4 +1,8 @@
 import React from 'react';
+import Settings from './components/settings/Settings';
+import Music from './components/music/Music';
+import Cover from './components/CoverFlow';
+import Game from './components/games/Game';
 
 class App extends React.Component{
   constructor () {
@@ -26,6 +30,42 @@ class App extends React.Component{
     console.log('new state',this.state);
 
   }
+  handleClickSettings = () =>{
+    this.setState({
+      show:true,
+      settings:<Settings />,
+      coverflow:'',
+      music:'',
+      games:''
+    })
+  }
+  handleClickCover = () =>{
+    this.setState({
+      show:true,
+      settings:'',
+      coverflow:<Cover />,
+      music:'',
+      games:''
+    })
+  }
+  handleClickMusic = () =>{
+    this.setState({
+      show:true,
+      settings:'',
+      coverflow:'',
+      music:<Music />,
+      games:''
+    })
+  }
+  handleClickGames = () =>{
+    this.setState({
+      show:true,
+      settings:'',
+      coverflow:'',
+      music:'',
+      games:<Game />
+    })
+  }
   render(){
     const {show,settings,coverflow,games,music}=this.state;
     return (
@@ -35,13 +75,14 @@ class App extends React.Component{
             show && 
             <div>
                 <div className='screen-left'>
-                  {settings}<br/>
-                  {coverflow} <br/>
-                  {games} <br />
-                  {music} <br />
+                  <div><h2>IPod</h2></div>
+                  <div onClick={this.handleClickSettings}>{settings}</div>
+                  <div onClick={this.handleClickCover}>{coverflow} </div>
+                  <div onClick={this.handleClickMusic}>{music} </div>
+                  <div onClick={this.handleClickGames}>{games} </div>
                 </div>
                 <div className='screen-right'>
-                  <img src='https://image.flaticon.com/icons/svg/3352/3352491.svg' alt='ipod' />
+                  
                 </div>
                 
             </div>

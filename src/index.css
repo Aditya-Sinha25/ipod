@@ -33,8 +33,15 @@ body {
   width:150px;
   height:250px;
 }
+.screen-left div{
+  height:50px;
+  width:150px;
+  margin-left:10px;
+}
 
 .screen-right{
+  background-image: url(/side.jpg);
+  background-size: contain;
   width:100px;
   height:250px;
 }
