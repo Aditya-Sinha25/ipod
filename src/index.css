@@ -38,6 +38,13 @@ body {
   width:150px;
   margin-left:10px;
 }
+.screen-left-items{
+	color:red;
+}
+.active-state{
+	color:black;
+	background:cyan;
+}
 
 .screen-right{
   background-image: url(/side.jpg);
