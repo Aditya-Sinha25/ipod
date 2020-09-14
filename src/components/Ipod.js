@@ -4,14 +4,15 @@ import Music from './Music';
 import Cover from './CoverFlow';
 import Game from './Game';
 import Home from './Home';
-import ZingTouch from 'zingtouch';
+
 class Ipod extends React.Component{
  constructor(){
    super();
    this.state={
      activeState:'',
      activeList:'',
-     prevList:''
+     prevSelected:'',
+     currentSelected:''
    }
  };
 
@@ -26,45 +27,89 @@ class Ipod extends React.Component{
  //}
 
  handleClickMenu = () =>{
+   const {currentSelected}=this.state;
    this.setState({
-     activeState:<Home />
+     activeState:<Home activeList={currentSelected}/>
    });
 
  }
 
  handleClickForward = () =>{
-   const {activeList,prevList}=this.state;
-   console.log('Forward Clicked');
-   if(prevList===''){
+   const {currentSelected}=this.state;
+   if(currentSelected===''){
      this.setState({
-       prevList:'Settings',
+       currentSelected:'Settings',
+       prevSelected:'Game',
        activeList:<Settings />
      })
    }
-   else if(prevList==='Settings'){
+   else if(currentSelected==='Settings'){
     this.setState({
       activeList:<Cover />,
-      prevList:'Cover',
+      currentSelected:'Cover',
+      prevSelected:'Settings'
     })
   }
-  else if(prevList==='Cover'){
+  else if(currentSelected==='Cover'){
     this.setState({
       activeList:<Music />,
-      prevList:'Music',
+      currentSelected:'Music',
+      prevSelected:'Cover'
     })
+  }
+  else if(currentSelected==='Music'){
+    this.setState({
+      activeList:<Game />,
+      currentSelected:'Game',
+      prevSelected:'Music'
+
+    })
+  }
  }
- console.log(activeList);
+
+ handleClickBackward = () =>{
+  const {prevSelected}=this.state;
+  if(prevSelected==='Settings'){
+    this.setState({
+      currentSelected:'Game',
+      activeList:<Game />,
+      prevSelected:'Music'
+    })
+  }
+  else if(prevSelected==='Music'){
+      this.setState({
+        currentSelected:'Music',
+        activeList:<Music />,
+        prevSelected:'Cover'
+    })
+  }
+  else if(prevSelected==='Cover'){
+    this.setState({
+      currentSelected:'Cover',
+      activeList:<Cover />,
+      prevSelected:'Settings'
+    })
+  }
+  else if(prevSelected===''){
+    this.setState({
+      currentSelected:'Game',
+      activeList:<Game />,
+      prevSelected:'Music'
+    })
+  }
  }
 
  handleClickMain = () =>{
-   var {activeList,activeState} =this.state;
+   var {activeList} =this.state;
    console.log("Main circle clicked");
    this.setState({
      activeState:activeList
    });
-   console.log(activeState);
-   console.log(activeList);
 
+ }
+
+ componentDidUpdate(prevProps,prevState){
+   console.log('component did update');
  }
  
 
@@ -74,16 +119,16 @@ class Ipod extends React.Component{
         return(
             <div className="Ipod-container">
             <div className='screen'>
-             {activeState }
+             {activeState}
           </div>
           <div className="wheel">
         	  <div className="div1" >
 
         	    <div className="div2" onClick={this.handleClickMain}></div>
         	    <div className="div3" onClick={this.handleClickMenu}>Menu</div>
-        	    <div className="div4" onClick={this.handleClickForward}><img src="https://image.flaticon.com/icons/svg/860/860754.svg" /></div>
-        	    <div className="div5"><img src="https://image.flaticon.com/icons/svg/149/149126.svg" /></div>
-        	    <div className="div6"><img src="https://image.flaticon.com/icons/svg/39/39712.svg" /></div>
+        	    <div className="div4" onClick={this.handleClickForward}><img src="https://image.flaticon.com/icons/svg/860/860754.svg" alt='forward' /></div>
+        	    <div className="div5"><img src="https://image.flaticon.com/icons/svg/149/149126.svg" alt='stop'/></div>
+        	    <div className="div6" onClick={this.handleClickBackward}><img src="https://image.flaticon.com/icons/svg/39/39712.svg"  alt='Backward'/></div>
 
         	  </div>
 

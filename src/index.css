@@ -43,7 +43,9 @@ body {
 }
 .active-state{
 	color:black;
-	background:cyan;
+	background-color:cyan;
+	height:10px;
+	width:150px;
 }
 
 .screen-right{
@@ -81,7 +83,7 @@ body {
 	top:25%;
 	border-radius:50%;
 	position:relative;
-  margin:auto;
+  	margin:auto;
 }
 .div3{
 	margin-top:50px;
@@ -116,4 +118,19 @@ body {
 	position: absolute;
 	top:10px;
 	margin:75px 0 0 -10px;
+}
+.settings img{
+	height:70px;
+	width:70px;
+	margin-top:85px;
+	margin-left:80px;
+	animation: rotate infinite;
+}
+@keyframes rotate{
+	0%{
+		transform: rotate(0);
+	}
+	100%{
+		transform:rotate(360);
+	}
 }

@@ -1,16 +1,15 @@
 import React from 'react';
 
-class Home extends React.Component{
-    render(){
-        const {forwardPress} =this.props;
+const Home = (props) =>{
+        const {activeList} =props;
         return(
             <div>
             <div className='screen-left'>
-              <h2>IPod</h2>
-              <div className="screen-left-item">Settings</div>
-              <div className="screen-left-item">Coverflow </div>
-              <div className="screen-left-item">Music </div>
-              <div className="screen-left-item">Game </div>
+              <h2>iPod</h2>
+              <div className={activeList==='Settngs'?'active-state':'screen-left-item'}>Settings</div>
+              <div className={activeList==='Cover'?'active-state':'screen-left-item'}>Coverflow </div>
+              <div className={activeList==='Music'?'active-state':'screen-left-item'}>Music </div>
+              <div className={activeList==='Game'?'active-state':'screen-left-item'}>Game </div>
             </div>
             <div className='screen-right'>
               
@@ -18,7 +17,6 @@ class Home extends React.Component{
             
         </div>
         );
-    }
 }
 
 export default Home;
