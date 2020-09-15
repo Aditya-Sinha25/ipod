@@ -27,31 +27,35 @@ body {
   margin:auto;
   margin-top:25px;
   border:2px solid black;
-  display: inline-block;
+}
+.home-screen{
+	display: flex;
+	flex-direction: row;
 }
 .screen-left{
   width:150px;
   height:250px;
 }
-.screen-left div{
-  height:50px;
-  width:150px;
+.screen-left div, .screen-left h2{
+  height:30px;
+  width:100px;
   margin-left:10px;
+  margin-top:18px;
 }
 .screen-left-items{
 	color:red;
 }
 .active-state{
-	color:black;
-	background-color:cyan;
+	color:white;
+	background-color:#65b5e5;
 	height:10px;
 	width:150px;
 }
 
 .screen-right{
-  background-image: url(/side.jpg);
-  background-size: contain;
-  width:100px;
+  background-image: url(./assets/side.jpg);
+  background-size: cover;
+  width:192px;
   height:250px;
 }
 .screen-right img{
@@ -120,17 +124,26 @@ body {
 	margin:75px 0 0 -10px;
 }
 .settings img{
-	height:70px;
-	width:70px;
-	margin-top:85px;
-	margin-left:80px;
-	animation: rotate infinite;
+    width: 70px;
+	height: 70px;
+	margin: 90px 0 0 80px;
+    animation:spin 4s linear infinite;
 }
-@keyframes rotate{
+@keyframes spin{
 	0%{
-		transform: rotate(0);
+		transform: rotate(0deg);
 	}
 	100%{
-		transform:rotate(360);
+		transform: rotate(360deg);
 	}
+}
+
+
+
+/*Game Component*/
+.game-component{
+	background-image: url(./assets/tenor.gif);
+	background-size: cover;
+	width:250px;
+	height:250px;
 }

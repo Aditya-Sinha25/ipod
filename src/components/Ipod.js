@@ -26,6 +26,15 @@ class Ipod extends React.Component{
 
  //}
 
+ componentDidUpdate = (prevProps,prevState) =>{
+  const {currentSelected}=this.state;
+  if(currentSelected!==prevState.currentSelected){
+    this.setState({
+      activeState:<Home activeList={currentSelected} />
+    })
+  }
+}
+
  handleClickMenu = () =>{
    const {currentSelected}=this.state;
    this.setState({
@@ -65,15 +74,23 @@ class Ipod extends React.Component{
 
     })
   }
+  else if(currentSelected==='Game'){
+    this.setState({
+      activeList:<Settings />,
+      currentSelected:'Settings',
+      prevSelected:'Game'
+
+    })
+  }
  }
 
  handleClickBackward = () =>{
   const {prevSelected}=this.state;
-  if(prevSelected==='Settings'){
+  if(prevSelected===''|| prevSelected==='Settings'){
     this.setState({
-      currentSelected:'Game',
-      activeList:<Game />,
-      prevSelected:'Music'
+      currentSelected:'Settings',
+      activeList:<Settings />,
+      prevSelected:'Game'
     })
   }
   else if(prevSelected==='Music'){
@@ -90,7 +107,7 @@ class Ipod extends React.Component{
       prevSelected:'Settings'
     })
   }
-  else if(prevSelected===''){
+  else if(prevSelected==='Game'){
     this.setState({
       currentSelected:'Game',
       activeList:<Game />,
