@@ -12,158 +12,192 @@ class Ipod extends React.Component{
    this.state={
      activeState:'',
      activeList:'',
-     prevSelected:'',
-     currentSelected:''
+     currentSelected:'',
+     activeScreen:'',
+     musicList:'',
+     musicSelected:''
    }
  };
 
- componentDidUpdate = (prevProps,prevState) =>{
-  const {currentSelected}=this.state;
-  if(currentSelected!==prevState.currentSelected){
-    this.setState({
-      activeState:<Home activeList={currentSelected} />
-    })
+componentDidUpdate = (prevProps,prevState) =>{
+  const {currentSelected,activeScreen,musicList}=this.state;
+  if(activeScreen==='Home'){
+    if(currentSelected!==prevState.currentSelected){
+      this.setState({
+        activeState:<Home activeList={currentSelected} />
+      })
+    }
   }
+  if(activeScreen==='Music'){
+    if(musicList!==prevState.musicList){
+      this.setState({
+        activeState:<Music musicList={musicList} />
+      })
+    }
+  }
+
 }
 
  handleClickMenu = () =>{
    const {currentSelected}=this.state;
    this.setState({
+     activeScreen:'Home',
      activeState:<Home activeList={currentSelected}/>
    });
 
  }
 
-//handleClickForward = () =>{
-//  const {currentSelected}=this.state;
-//  if(currentSelected===''){
-//    this.setState({
-//      currentSelected:'Settings',
-//      prevSelected:'Game',
-//      activeList:<Settings />
-//    })
-//  }
-//  else if(currentSelected==='Settings'){
-//   this.setState({
-//     activeList:<Cover />,
-//     currentSelected:'Cover',
-//     prevSelected:'Settings'
-//   })
-// }
-// else if(currentSelected==='Cover'){
-//   this.setState({
-//     activeList:<Music />,
-//     currentSelected:'Music',
-//     prevSelected:'Cover'
-//   })
-// }
-// else if(currentSelected==='Music'){
-//   this.setState({
-//     activeList:<Game />,
-//     currentSelected:'Game',
-//     prevSelected:'Music'
-//
-//   })
-// }
-// else if(currentSelected==='Game'){
-//   this.setState({
-//     activeList:<Settings />,
-//     currentSelected:'Settings',
-//     prevSelected:'Game'
-//
-//   })
-// }
-//}
-//
-//handleClickBackward = () =>{
-// const {prevSelected}=this.state;
-// if(prevSelected===''|| prevSelected==='Settings'){
-//   this.setState({
-//     currentSelected:'Settings',
-//     activeList:<Settings />,
-//     prevSelected:'Game'
-//   })
-// }
-// else if(prevSelected==='Music'){
-//     this.setState({
-//       currentSelected:'Music',
-//       activeList:<Music />,
-//       prevSelected:'Cover'
-//   })
-// }
-// else if(prevSelected==='Cover'){
-//   this.setState({
-//     currentSelected:'Cover',
-//     activeList:<Cover />,
-//     prevSelected:'Settings'
-//   })
-// }
-// else if(prevSelected==='Game'){
-//   this.setState({
-//     currentSelected:'Game',
-//     activeList:<Game />,
-//     prevSelected:'Music'
-//   })
-// }
-//}
 
  wheelClick = () =>{
    var container=document.getElementById('div1');
    const self=this;
+   const {activeScreen,musicList}=this.state;
    var region =new ZingTouch.Region(container);
    region.bind(container,'rotate',function(event){
      console.log('Rotation is occuring',event);
      var newAngle=event.detail.distanceFromOrigin;
      console.log(newAngle);
-     if(newAngle>0&&newAngle<85){
-      self.setState({
-          currentSelected:'Settings',
-          prevSelected:'Game',
-          activeList:<Settings />
-        })
+     var i=0;
+     if(newAngle>60){
+       i=Math.floor(newAngle/60); 
      }
-     else if(newAngle>85&&newAngle<177){
-      self.setState({
-         activeList:<Cover />,
-         currentSelected:'Cover',
-         prevSelected:'Settings'
-       })
+     if(activeScreen==='Home'){
+      if(i*newAngle>0+60*i&&i*newAngle<=15+60*i){
+        self.setState({
+            currentSelected:'Settings',
+            activeList:<Settings />
+          })
+       }
+       else if(i*newAngle>15+60*i&&i*newAngle<=30+60*i){
+        self.setState({
+           activeList:<Cover />,
+           currentSelected:'Cover',
+         })
+  
+       }
+       else if(i*newAngle>30+60*i&&i*newAngle<=45+60*i){
+        self.setState({
+           activeList:<Music activeList={musicList}/>,
+           currentSelected:'Music',
+         })
+  
+       }
+       else if(i*newAngle>45+60*i&&i*newAngle<=60+60*i){
+        self.setState({
+           activeList:<Game />,
+           currentSelected:'Game',
+         })
+  
+       }
+  
+       if(i*newAngle>0-60*i&&i*newAngle<=-15-60*i){
+        self.setState({
+            currentSelected:'Settings',
+            activeList:<Settings />
+          })
+       }
+       else if(i*newAngle>-15-60*i&&i*newAngle<=-30-60*i){
+        self.setState({
+           activeList:<Cover />,
+           currentSelected:'Cover',
+         })
+  
+       }
+       else if(i*newAngle>-30-60*i&&i*newAngle<=-45-60*i){
+        self.setState({
+           activeList:<Music activeList={musicList}/>,
+           currentSelected:'Music',
+         })
+  
+       }
+       else if(i*newAngle>-45-60*i&&i*newAngle<=-60-60*i){
+        self.setState({
+           activeList:<Game />,
+           currentSelected:'Game',
+         })
+  
+       }
+     }
 
+     else if(activeScreen==='Music'){
+      if(i*newAngle>0+60*i&&i*newAngle<=15+60*i){
+        self.setState({
+            musicList:'All Songs'
+          })
+       }
+       else if(i*newAngle>15+60*i&&i*newAngle<=30+60*i){
+        self.setState({
+          musicList:'Albums'
+         })
+  
+       }
+       else if(i*newAngle>30+60*i&&i*newAngle<=45+60*i){
+        self.setState({
+           musicList:'Artists'
+         })
+  
+       }
+       else if(i*newAngle>45+60*i&&i*newAngle<=60+60*i){
+        self.setState({
+           musicList:'Ghazals'
+         })
+  
+       }
+  
+       if(i*newAngle>0-60*i&&i*newAngle<=-15-60*i){
+        self.setState({
+            musicList:'All Songs'
+          })
+       }
+       else if(i*newAngle>-15-60*i&&i*newAngle<=-30-60*i){
+        self.setState({
+           musicList:'Albums'
+         })
+  
+       }
+       else if(i*newAngle>-30-60*i&&i*newAngle<=-45-60*i){
+        self.setState({
+           musicList:'Artists'
+         })
+  
+       }
+       else if(i*newAngle>-45-60*i&&i*newAngle<=-60-60*i){
+        self.setState({
+           musicList:'Ghazals'
+         })
+  
+       }
      }
-     else if(newAngle>177&&newAngle<264){
-      self.setState({
-         activeList:<Music />,
-         currentSelected:'Music',
-         prevSelected:'Cover'
-       })
-
-     }
-     else if(newAngle>264&&newAngle<360){
-      self.setState({
-         activeList:<Game />,
-         currentSelected:'Game',
-         prevSelected:'Music'
     
-       })
 
-     }
    });
  }
 
  handleClickMain = () =>{
-   var {activeList} =this.state;
+   var {activeList,currentSelected,musicList,activeScreen} =this.state;
    console.log("Main circle clicked");
-   this.setState({
-     activeState:activeList
-   });
+   if(currentSelected==='Music'){
+     this.setState({
+       activeScreen:'Music',
+       activeState:<Music musicList={musicList}/>,
+     })
+   }
+   else{
+    this.setState({
+      activeState:activeList
+    });
+   }
 
- }
+   if(activeScreen==='Music'){
+     var insideMusic=< musicList />
+     this.setState({
+       musicSelected:insideMusic
+     })
+   }
+   
 
- componentDidUpdate(prevProps,prevState){
-   console.log('component did update');
  }
  
-
     render(){
       const {activeState} =this.state;
       console.log('render');

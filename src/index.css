@@ -147,3 +147,12 @@ body {
 	width:250px;
 	height:250px;
 }
+
+/*Music Component*/
+
+.artists{
+	background-image: url(./assets/darshan.jpg);
+	background-size: cover;
+	height:250px;
+	width:250px;
+}
