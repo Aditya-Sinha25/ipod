@@ -4,6 +4,7 @@ import Music from './Music';
 import Cover from './CoverFlow';
 import Game from './Game';
 import Home from './Home';
+import ZingTouch from 'zingtouch';
 
 class Ipod extends React.Component{
  constructor(){
@@ -15,16 +16,6 @@ class Ipod extends React.Component{
      currentSelected:''
    }
  };
-
- //rotation = () =>{
- // var containerElement=document.getElementsByClassName('div1');
- // var activeRegion=ZingTouch.Region(containerElement);
- // activeRegion.bind(containerElement,'rotate',function(e){
- //   console.log('inside container');
- // })
-  
-
- //}
 
  componentDidUpdate = (prevProps,prevState) =>{
   const {currentSelected}=this.state;
@@ -43,77 +34,120 @@ class Ipod extends React.Component{
 
  }
 
- handleClickForward = () =>{
-   const {currentSelected}=this.state;
-   if(currentSelected===''){
-     this.setState({
-       currentSelected:'Settings',
-       prevSelected:'Game',
-       activeList:<Settings />
-     })
-   }
-   else if(currentSelected==='Settings'){
-    this.setState({
-      activeList:<Cover />,
-      currentSelected:'Cover',
-      prevSelected:'Settings'
-    })
-  }
-  else if(currentSelected==='Cover'){
-    this.setState({
-      activeList:<Music />,
-      currentSelected:'Music',
-      prevSelected:'Cover'
-    })
-  }
-  else if(currentSelected==='Music'){
-    this.setState({
-      activeList:<Game />,
-      currentSelected:'Game',
-      prevSelected:'Music'
+//handleClickForward = () =>{
+//  const {currentSelected}=this.state;
+//  if(currentSelected===''){
+//    this.setState({
+//      currentSelected:'Settings',
+//      prevSelected:'Game',
+//      activeList:<Settings />
+//    })
+//  }
+//  else if(currentSelected==='Settings'){
+//   this.setState({
+//     activeList:<Cover />,
+//     currentSelected:'Cover',
+//     prevSelected:'Settings'
+//   })
+// }
+// else if(currentSelected==='Cover'){
+//   this.setState({
+//     activeList:<Music />,
+//     currentSelected:'Music',
+//     prevSelected:'Cover'
+//   })
+// }
+// else if(currentSelected==='Music'){
+//   this.setState({
+//     activeList:<Game />,
+//     currentSelected:'Game',
+//     prevSelected:'Music'
+//
+//   })
+// }
+// else if(currentSelected==='Game'){
+//   this.setState({
+//     activeList:<Settings />,
+//     currentSelected:'Settings',
+//     prevSelected:'Game'
+//
+//   })
+// }
+//}
+//
+//handleClickBackward = () =>{
+// const {prevSelected}=this.state;
+// if(prevSelected===''|| prevSelected==='Settings'){
+//   this.setState({
+//     currentSelected:'Settings',
+//     activeList:<Settings />,
+//     prevSelected:'Game'
+//   })
+// }
+// else if(prevSelected==='Music'){
+//     this.setState({
+//       currentSelected:'Music',
+//       activeList:<Music />,
+//       prevSelected:'Cover'
+//   })
+// }
+// else if(prevSelected==='Cover'){
+//   this.setState({
+//     currentSelected:'Cover',
+//     activeList:<Cover />,
+//     prevSelected:'Settings'
+//   })
+// }
+// else if(prevSelected==='Game'){
+//   this.setState({
+//     currentSelected:'Game',
+//     activeList:<Game />,
+//     prevSelected:'Music'
+//   })
+// }
+//}
 
-    })
-  }
-  else if(currentSelected==='Game'){
-    this.setState({
-      activeList:<Settings />,
-      currentSelected:'Settings',
-      prevSelected:'Game'
+ wheelClick = () =>{
+   var container=document.getElementById('div1');
+   const self=this;
+   var region =new ZingTouch.Region(container);
+   region.bind(container,'rotate',function(event){
+     console.log('Rotation is occuring',event);
+     var newAngle=event.detail.distanceFromOrigin;
+     console.log(newAngle);
+     if(newAngle>0&&newAngle<85){
+      self.setState({
+          currentSelected:'Settings',
+          prevSelected:'Game',
+          activeList:<Settings />
+        })
+     }
+     else if(newAngle>85&&newAngle<177){
+      self.setState({
+         activeList:<Cover />,
+         currentSelected:'Cover',
+         prevSelected:'Settings'
+       })
 
-    })
-  }
- }
+     }
+     else if(newAngle>177&&newAngle<264){
+      self.setState({
+         activeList:<Music />,
+         currentSelected:'Music',
+         prevSelected:'Cover'
+       })
 
- handleClickBackward = () =>{
-  const {prevSelected}=this.state;
-  if(prevSelected===''|| prevSelected==='Settings'){
-    this.setState({
-      currentSelected:'Settings',
-      activeList:<Settings />,
-      prevSelected:'Game'
-    })
-  }
-  else if(prevSelected==='Music'){
-      this.setState({
-        currentSelected:'Music',
-        activeList:<Music />,
-        prevSelected:'Cover'
-    })
-  }
-  else if(prevSelected==='Cover'){
-    this.setState({
-      currentSelected:'Cover',
-      activeList:<Cover />,
-      prevSelected:'Settings'
-    })
-  }
-  else if(prevSelected==='Game'){
-    this.setState({
-      currentSelected:'Game',
-      activeList:<Game />,
-      prevSelected:'Music'
-    })
-  }
+     }
+     else if(newAngle>264&&newAngle<360){
+      self.setState({
+         activeList:<Game />,
+         currentSelected:'Game',
+         prevSelected:'Music'
+    
+       })
+
+     }
+   });
  }
 
  handleClickMain = () =>{
@@ -139,7 +173,7 @@ class Ipod extends React.Component{
              {activeState}
           </div>
           <div className="wheel">
-        	  <div className="div1" >
+        	  <div id="div1" onMouseOver={this.wheelClick}>
 
         	    <div className="div2" onClick={this.handleClickMain}></div>
         	    <div className="div3" onClick={this.handleClickMenu}>Menu</div>
