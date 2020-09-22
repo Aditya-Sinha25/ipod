@@ -1,7 +1,7 @@
 import React from 'react';
-import Tarfa from '../assets/EkTarfa.mp3';
-import Goat from '../assets/Goat.mp3';
-import Ghazal from '../assets/Ghazal.mp3';
+import Tarfa from '../assets/music/EkTarfa.mp3';
+import Goat from '../assets/music/Goat.mp3';
+import Ghazal from '../assets/music/Ghazal.mp3';
 
 class MusicComp extends React.Component{
 

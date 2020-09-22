@@ -40,6 +40,7 @@ componentDidUpdate = (prevProps,prevState) =>{
 
 }
 
+ //handle the click on the menu
  handleClickMenu = () =>{
    const {currentSelected}=this.state;
    this.setState({
@@ -50,9 +51,10 @@ componentDidUpdate = (prevProps,prevState) =>{
  }
 
 
+ //applying the rotation
  wheelClick = () =>{
    var container=document.getElementById('div1');
-   const self=this;
+   const ipod=this;
    const {activeScreen,musicList}=this.state;
    var region =new ZingTouch.Region(container);
    region.bind(container,'rotate',function(event){
@@ -65,27 +67,27 @@ componentDidUpdate = (prevProps,prevState) =>{
      }
      if(activeScreen==='Home'){
       if(i*newAngle>0+60*i&&i*newAngle<=15+60*i){
-        self.setState({
+        ipod.setState({
             currentSelected:'Settings',
             activeList:<Settings />
           })
        }
        else if(i*newAngle>15+60*i&&i*newAngle<=30+60*i){
-        self.setState({
+        ipod.setState({
            activeList:<Cover />,
            currentSelected:'Cover',
          })
   
        }
        else if(i*newAngle>30+60*i&&i*newAngle<=45+60*i){
-        self.setState({
+        ipod.setState({
            activeList:<Music activeList={musicList}/>,
            currentSelected:'Music',
          })
   
        }
        else if(i*newAngle>45+60*i&&i*newAngle<=60+60*i){
-        self.setState({
+        ipod.setState({
            activeList:<Game />,
            currentSelected:'Game',
          })
@@ -93,27 +95,27 @@ componentDidUpdate = (prevProps,prevState) =>{
        }
   
        if(i*newAngle>0-60*i&&i*newAngle<=-15-60*i){
-        self.setState({
+        ipod.setState({
             currentSelected:'Settings',
             activeList:<Settings />
           })
        }
        else if(i*newAngle>-15-60*i&&i*newAngle<=-30-60*i){
-        self.setState({
+        ipod.setState({
            activeList:<Cover />,
            currentSelected:'Cover',
          })
   
        }
        else if(i*newAngle>-30-60*i&&i*newAngle<=-45-60*i){
-        self.setState({
+        ipod.setState({
            activeList:<Music activeList={musicList}/>,
            currentSelected:'Music',
          })
   
        }
        else if(i*newAngle>-45-60*i&&i*newAngle<=-60-60*i){
-        self.setState({
+        ipod.setState({
            activeList:<Game />,
            currentSelected:'Game',
          })
@@ -123,48 +125,48 @@ componentDidUpdate = (prevProps,prevState) =>{
 
      else if(activeScreen==='Music'){
       if(i*newAngle>0+60*i&&i*newAngle<=15+60*i){
-        self.setState({
+        ipod.setState({
             musicList:'All Songs'
           })
        }
        else if(i*newAngle>15+60*i&&i*newAngle<=30+60*i){
-        self.setState({
+        ipod.setState({
           musicList:'Albums'
          })
   
        }
        else if(i*newAngle>30+60*i&&i*newAngle<=45+60*i){
-        self.setState({
+        ipod.setState({
            musicList:'Artists'
          })
   
        }
        else if(i*newAngle>45+60*i&&i*newAngle<=60+60*i){
-        self.setState({
+        ipod.setState({
            musicList:'Ghazals'
          })
   
        }
   
        if(i*newAngle>0-60*i&&i*newAngle<=-15-60*i){
-        self.setState({
+        ipod.setState({
             musicList:'All Songs'
           })
        }
        else if(i*newAngle>-15-60*i&&i*newAngle<=-30-60*i){
-        self.setState({
+        ipod.setState({
            musicList:'Albums'
          })
   
        }
        else if(i*newAngle>-30-60*i&&i*newAngle<=-45-60*i){
-        self.setState({
+        ipod.setState({
            musicList:'Artists'
          })
   
        }
        else if(i*newAngle>-45-60*i&&i*newAngle<=-60-60*i){
-        self.setState({
+        ipod.setState({
            musicList:'Ghazals'
          })
   
@@ -175,6 +177,7 @@ componentDidUpdate = (prevProps,prevState) =>{
    });
  }
 
+ //handle the click on the inner-most circle
  handleClickMain = () =>{
    var {activeList,currentSelected,musicList,activeScreen} =this.state;
    console.log("Main circle clicked");

@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+/*styling the ipod */
 .Ipod-container{
   background-color:#777;
   width:300px;
@@ -19,6 +19,7 @@ body {
   flex-direction: column;
 }
 
+/*Adding the style to the screen*/
 .screen{
   background-color:white;
   color:black;
@@ -28,14 +29,177 @@ body {
   margin-top:25px;
   border:2px solid black;
 }
+
+/*<Home /> Component styling*/
 .home-screen{
 	display: flex;
 	flex-direction: row;
 }
+
+/*Home component left style styling*/
 .screen-left{
   width:150px;
   height:250px;
 }
+
+.screen-left div, .screen-left h2{
+  height:30px;
+  width:100px;
+  margin-left:10px;
+  margin-top:18px;
+}
+.screen-left-items{
+	color:red;
+}
+
+/*When the list is active , then adding some styling*/
+.active-state{
+	color:white;
+	background-color:#65b5e5;
+	height:10px;
+	width:150px;
+}
+
+/*Home component right side styling */
+.screen-right{
+  background-image: url(./assets/images/side.jpg);
+  background-size: cover;
+  width:192px;
+  height:250px;
+}
+.screen-right img{
+  width:100px;
+}
+
+/*Centre wheel on  the bottom */
+.wheel{
+	width:250px;
+	height:250px;
+	background-color: black;
+	margin:auto;
+	border-radius: 50%;
+	padding:10px;
+}
+/**/
+#div1{
+	width:200px;
+	height:200px;
+	background-color: white;
+	border-radius:50%;
+	margin:auto;
+	padding:15px;
+	position: relative;
+	margin-top:10px;
+}
+
+/*Inner most circle. Main button*/
+.div2{
+	background-color:#777;
+	height:100px;
+	width:100px;
+	top:25%;
+	border-radius:50%;
+	position:relative;
+  	margin:auto;
+}
+
+/*Menu button*/
+.div3{
+	margin-top:50px;
+	height:50px;
+	width:50px;
+	color:black;
+	position: absolute;
+	top:0px;
+	margin:25px 0 0 75px;
+	font-size:1.5rem;
+}
+
+/*Forward button*/
+.div4{
+	height:50px;
+	width:50px;
+	color:black;
+	position: absolute;
+	top:10px;
+	margin:75px 0 0 160px;
+}
+
+/*Stop button*/
+.div5{
+	height:50px;
+	width:50px;
+	color:black;
+	position: absolute;
+	bottom:10px;
+	margin:0 0 0 80px;
+}
+
+/*Backward button*/
+.div6 img{
+	height:50px;
+	width:50px;
+	color:black;
+	position: absolute;
+	top:10px;
+	margin:75px 0 0 -10px;
+}
+
+/*<Setting /> Component*/
+.settings img{
+    width: 70px;
+	height: 70px;
+	margin: 90px 0 0 90px;
+    animation:spin 4s linear infinite;
+}
+
+/*Adding the animation to the settings image*/
+@keyframes spin{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+
+/*CoverFlow component*/
+.cover-flow{
+	margin: 100px 0 0 70px;
+}
+
+
+/*Game Component*/
+.game-component{
+	background-image: url(./assets/images/tenor.gif);
+	background-size: cover;
+	width:250px;
+	height:250px;
+}
+
+/*Music Component*/
+.artists{
+	background-image: url(./assets/images/darshan.jpg);
+	background-size: cover;
+	height:250px;
+	width:250px;
+}
+
+.cover-all-songs , .cover-albums, .cover-ghazal{
+	background-image: url(./assets/images/cover.jpg);
+	background-size: cover;
+	width: 180px;
+	height: 180px;
+	margin: 40px 0 0 35px;
+}
+.cover-albums{
+	background-image: url(./assets/images/diljit.jpg);
+}
+.cover-ghazal{
+	background-image: url(./assets/images/jagjit.jpg);
+}
+
 .screen-left-music{
 	width:250px;
 	height:250px;
@@ -47,145 +211,3 @@ body {
 	margin-left:10px;
 	margin-top:18px;
   }
-.screen-left div, .screen-left h2{
-  height:30px;
-  width:100px;
-  margin-left:10px;
-  margin-top:18px;
-}
-.screen-left-items{
-	color:red;
-}
-.active-state{
-	color:white;
-	background-color:#65b5e5;
-	height:10px;
-	width:150px;
-}
-
-.screen-right{
-  background-image: url(./assets/side.jpg);
-  background-size: cover;
-  width:192px;
-  height:250px;
-}
-.screen-right img{
-  width:100px;
-}
-
-.wheel{
-	width:250px;
-	height:250px;
-	background-color: black;
-	margin:auto;
-	border-radius: 50%;
-	padding:10px;
-}
-#div1{
-	width:200px;
-	height:200px;
-	background-color: white;
-	border-radius:50%;
-	margin:auto;
-	padding:15px;
-	position: relative;
-	margin-top:10px;
-}
-.div2{
-	background-color:#777;
-	height:100px;
-	width:100px;
-	top:25%;
-	border-radius:50%;
-	position:relative;
-  	margin:auto;
-}
-.div3{
-	margin-top:50px;
-	height:50px;
-	width:50px;
-	color:black;
-	position: absolute;
-	top:0px;
-	margin:25px 0 0 75px;
-	font-size:1.5rem;
-}
-.div4{
-	height:50px;
-	width:50px;
-	color:black;
-	position: absolute;
-	top:10px;
-	margin:75px 0 0 160px;
-}
-.div5{
-	height:50px;
-	width:50px;
-	color:black;
-	position: absolute;
-	bottom:10px;
-	margin:0 0 0 80px;
-}
-.div6 img{
-	height:50px;
-	width:50px;
-	color:black;
-	position: absolute;
-	top:10px;
-	margin:75px 0 0 -10px;
-}
-.settings img{
-    width: 70px;
-	height: 70px;
-	margin: 90px 0 0 90px;
-    animation:spin 4s linear infinite;
-}
-@keyframes spin{
-	0%{
-		transform: rotate(0deg);
-	}
-	100%{
-		transform: rotate(360deg);
-	}
-}
-
-
-
-/*Game Component*/
-.game-component{
-	background-image: url(./assets/tenor.gif);
-	background-size: cover;
-	width:250px;
-	height:250px;
-}
-
-/*Music Component*/
-
-.artists{
-	background-image: url(./assets/darshan.jpg);
-	background-size: cover;
-	height:250px;
-	width:250px;
-}
-
-.cover-all-songs{
-	background-image: url(./assets/cover.jpg);
-	background-size: cover;
-	width: 180px;
-	height: 180px;
-	margin: 40px 0 0 35px;
-}
-.cover-albums{
-	background-image: url(./assets/diljit.jpg);
-	background-size: cover;
-	width: 180px;
-	height: 180px;
-	margin: 40px 0 0 35px;
-}
-.cover-ghazal{
-	background-image: url(./assets/jagjit.jpg);
-	background-size: cover;
-	width: 180px;
-	height: 180px;
-	margin: 40px 0 0 35px;
-}

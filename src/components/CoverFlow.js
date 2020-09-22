@@ -3,7 +3,9 @@ import React from 'react';
 class Cover extends React.Component{
     render(){
         return(
-            <h3>Cover Flow</h3>
+            <div className='cover-flow'>
+                <h2>Cover Flow</h2>
+            </div>
         )
     }
 }
