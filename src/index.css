@@ -36,6 +36,17 @@ body {
   width:150px;
   height:250px;
 }
+.screen-left-music{
+	width:250px;
+	height:250px;
+	background-color:#97ede1;
+}
+.screen-left-music div, .screen-left-music h2{
+	height:30px;
+	width:100px;
+	margin-left:10px;
+	margin-top:18px;
+  }
 .screen-left div, .screen-left h2{
   height:30px;
   width:100px;
@@ -155,4 +166,26 @@ body {
 	background-size: cover;
 	height:250px;
 	width:250px;
+}
+
+.cover-all-songs{
+	background-image: url(./assets/cover.jpg);
+	background-size: cover;
+	width: 180px;
+	height: 180px;
+	margin: 40px 0 0 35px;
+}
+.cover-albums{
+	background-image: url(./assets/diljit.jpg);
+	background-size: cover;
+	width: 180px;
+	height: 180px;
+	margin: 40px 0 0 35px;
+}
+.cover-ghazal{
+	background-image: url(./assets/jagjit.jpg);
+	background-size: cover;
+	width: 180px;
+	height: 180px;
+	margin: 40px 0 0 35px;
 }

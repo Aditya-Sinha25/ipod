@@ -5,7 +5,7 @@ class Music extends React.Component{
         const {musicList}=this.props;
         return(
             <div className='home-screen'>
-            <div className='screen-left'>
+            <div className='screen-left-music'>
               <h2>Music</h2>
               <div className={musicList==='All Songs'?'active-state':'screen-left-item'}>All Songs</div>
               <div className={musicList==='Albums'?'active-state':'screen-left-item'}>Albums</div>

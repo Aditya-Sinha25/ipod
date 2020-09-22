@@ -1,11 +1,26 @@
 import React from 'react';
-import Song from '../assets/EkTarfa.mp3';
+import Tarfa from '../assets/EkTarfa.mp3';
+import Goat from '../assets/Goat.mp3';
+import Ghazal from '../assets/Ghazal.mp3';
 
 class MusicComp extends React.Component{
 
     componentDidMount = () =>{
-        const audio=document.getElementsByClassName('audio-element')[0];
-        audio.play();
+        const {music}=this.props;
+        if(music==='All Songs'){
+            const audio=document.getElementsByClassName('audio-element')[0];
+            audio.play();
+        }
+        else if(music==='Albums'){
+            const audio=document.getElementsByClassName('audio-element')[0];
+            audio.play();
+        }
+        else if(music==='Ghazals'){
+            const audio=document.getElementsByClassName('audio-element')[0];
+            audio.play();
+
+        }
+        
     }
 
     render(){
@@ -14,20 +29,30 @@ class MusicComp extends React.Component{
             <div>
                 {music==='All Songs'&& 
                     <div>
-                        <p>Ek Tarfa</p>
+                        <div className='cover-all-songs'/>
                         <audio className='audio-element'>
-                            <source src={Song} />
+                            <source src={Tarfa} />
                         </audio>
                     </div>
                 }
                 {music==='Albums'&& 
-                    <div></div>
+                    <div>
+                        <div className='cover-albums'/>
+                        <audio className='audio-element'>
+                            <source src={Goat} />
+                        </audio>
+                    </div>
                 }
                 {music==='Artists'&& 
                     <div className='artists' />
                 }
                 {music==='Ghazals'&& 
-                    <div></div>
+                    <div>
+                        <div className='cover-ghazal'/>
+                        <audio className='audio-element'>
+                            <source src={Ghazal} />
+                        </audio>
+                    </div>
                 }
             </div>
         )
