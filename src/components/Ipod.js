@@ -4,7 +4,9 @@ import Music from './Music';
 import Cover from './CoverFlow';
 import Game from './Game';
 import Home from './Home';
+import MusicComp from './MusicComp';
 import ZingTouch from 'zingtouch';
+
 
 class Ipod extends React.Component{
  constructor(){
@@ -189,9 +191,8 @@ componentDidUpdate = (prevProps,prevState) =>{
    }
 
    if(activeScreen==='Music'){
-     var insideMusic=< musicList />
      this.setState({
-       musicSelected:insideMusic
+       activeState:<MusicComp music={musicList}/>
      })
    }
    

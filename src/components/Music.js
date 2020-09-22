@@ -1,5 +1,4 @@
 import React from 'react';
-import MusicComp from './MusicComp';
 
 class Music extends React.Component{
     render(){

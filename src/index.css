@@ -126,7 +126,7 @@ body {
 .settings img{
     width: 70px;
 	height: 70px;
-	margin: 90px 0 0 80px;
+	margin: 90px 0 0 90px;
     animation:spin 4s linear infinite;
 }
 @keyframes spin{
