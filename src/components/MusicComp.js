@@ -28,19 +28,21 @@ class MusicComp extends React.Component{
         return(
             <div>
                 {music==='All Songs'&& 
-                    <div>
-                        <div className='cover-all-songs'/>
+                    <div>   
+                        <div className='cover-all-songs' />
                         <audio className='audio-element'>
                             <source src={Tarfa} />
                         </audio>
+                        <span className='song-name'><h2>Ek Tarfa</h2></span>
                     </div>
                 }
                 {music==='Albums'&& 
                     <div>
-                        <div className='cover-albums'/>
+                        <div className='cover-albums' />
                         <audio className='audio-element'>
                             <source src={Goat} />
                         </audio>
+                        <span className='song-name'><h2>G.O.A.T</h2></span>
                     </div>
                 }
                 {music==='Artists'&& 
@@ -48,10 +50,11 @@ class MusicComp extends React.Component{
                 }
                 {music==='Ghazals'&& 
                     <div>
-                        <div className='cover-ghazal'/>
+                        <div className='cover-ghazal' />
                         <audio className='audio-element'>
                             <source src={Ghazal} />
                         </audio>
+                        <span className='song-name'><h2>Ghazal</h2></span>
                     </div>
                 }
             </div>

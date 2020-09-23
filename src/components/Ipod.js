@@ -17,7 +17,6 @@ class Ipod extends React.Component{
      currentSelected:'',
      activeScreen:'',
      musicList:'',
-     musicSelected:''
    }
  };
 
@@ -207,7 +206,7 @@ componentDidUpdate = (prevProps,prevState) =>{
       console.log('render');
         return(
             <div className="Ipod-container">
-            <div className='screen'>
+            <div id='div' className='screen'>
              {activeState}
           </div>
           <div className="wheel">

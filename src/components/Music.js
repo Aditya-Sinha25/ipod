@@ -7,10 +7,13 @@ class Music extends React.Component{
             <div className='home-screen'>
             <div className='screen-left-music'>
               <h2>Music</h2>
-              <div className={musicList==='All Songs'?'active-state':'screen-left-item'}>All Songs</div>
-              <div className={musicList==='Albums'?'active-state':'screen-left-item'}>Albums</div>
-              <div className={musicList==='Artists'?'active-state':'screen-left-item'}>Artists</div>
-              <div className={musicList==='Ghazals'?'active-state':'screen-left-item'}>Ghazals</div>
+              <div className={musicList==='All Songs'?'active-state':''}>All Songs</div>
+              <div className={musicList==='Albums'?'active-state':''}>Albums</div>
+              <div className={musicList==='Artists'?'active-state':''}>Artists</div>
+              <div className={musicList==='Ghazals'?'active-state':''}>Ghazals</div>
+            </div>
+            <div className='screen-right-music'>
+              
             </div>
           
             

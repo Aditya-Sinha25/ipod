@@ -7,6 +7,9 @@ import App from './components/App';
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Kufam&display=swap');
+    </style> 
   </React.StrictMode>,
   document.getElementById('root')
 );
