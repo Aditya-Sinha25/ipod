@@ -1,24 +1,15 @@
 import React from 'react';
-import Tarfa from '../assets/music/EkTarfa.mp3';
-import Goat from '../assets/music/Goat.mp3';
-import Ghazal from '../assets/music/Ghazal.mp3';
+import Tarfa from '../../assets/music/EkTarfa.mp3';
+import Goat from '../../assets/music/Goat.mp3';
+import Ghazal from '../../assets/music/Ghazal.mp3';
 
 class MusicComp extends React.Component{
 
     componentDidMount = () =>{
         const {music}=this.props;
-        if(music==='All Songs'){
+        if(music==='All Songs'||music==='Albums'|| music==='Ghazals'){
             const audio=document.getElementsByClassName('audio-element')[0];
             audio.play();
-        }
-        else if(music==='Albums'){
-            const audio=document.getElementsByClassName('audio-element')[0];
-            audio.play();
-        }
-        else if(music==='Ghazals'){
-            const audio=document.getElementsByClassName('audio-element')[0];
-            audio.play();
-
         }
         
     }

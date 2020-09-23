@@ -1,10 +1,10 @@
 import React from  'react';
-import Settings from './Settings';
-import Music from './Music';
-import Cover from './CoverFlow';
-import Game from './Game';
+import Settings from './Settings/Settings';
+import Music from './Music/Music';
+import Cover from './CoverFlow/CoverFlow';
+import Game from './Games/Game';
 import Home from './Home';
-import MusicComp from './MusicComp';
+import MusicComp from './Music/MusicComp';
 import ZingTouch from 'zingtouch';
 
 
@@ -46,8 +46,8 @@ componentDidUpdate = (prevProps,prevState) =>{
      activeScreen:'Home',
      activeState:<Home activeList={currentSelected}/>
    });
-
- }
+  
+  }
 
 
  //applying the rotation
@@ -206,7 +206,7 @@ componentDidUpdate = (prevProps,prevState) =>{
       console.log('render');
         return(
             <div className="Ipod-container">
-            <div id='div' className='screen'>
+            <div className='screen'>
              {activeState}
           </div>
           <div className="wheel">
